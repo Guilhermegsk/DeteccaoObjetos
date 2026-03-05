@@ -1,9 +1,14 @@
 from ultralytics import YOLO
 
-model = YOLO("yolov26n.pt")
+model = None
+
+def load_model():
+    global model
+    model = YOLO("yolov26n.pt")
+    print("Modelo carregado!")
 
 def detect(frame):
-    results = model(frame)
+    results = model(frame, conf=0.10)
 
     detections = []
 
