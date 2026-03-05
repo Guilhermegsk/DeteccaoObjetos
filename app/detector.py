@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 
-model = YOLO("yolov8n.pt")
+model = YOLO("yolov26n.pt")
 
 def detect(frame):
     results = model(frame)
