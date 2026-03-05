@@ -3,9 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 import base64
 import numpy as np
 import cv2
-from app.detector import detect
+from app.detector import detect, load_model
 
 app = FastAPI()
+
+@app.on_event("startup")
+def startup_event():
+    print("Servidor iniciando...")
+    load_model()
 
 app.add_middleware(
     CORSMiddleware,
